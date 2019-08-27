@@ -26,8 +26,9 @@ module.exports = {
     try {
       const { username } = req.body;
 
-      // TODO: Verificar de se o usuário existe com case insensitive
-      const userExists = await Dev.findOne({ user: username });
+      const userExists = await Dev.findOne({
+        user: { $regex: username, $options: "i" }
+      });
 
       if (userExists) {
         return res.json(userExists);
