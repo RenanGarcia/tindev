@@ -1,5 +1,7 @@
 import React, {Fragment} from 'react';
-import {Text} from 'react-native';
+import {YellowBox} from 'react-native';
+
+YellowBox.ignoreWarnings(['Unrecognized WebSocket']);
 
 import Routes from './routes';
 
