@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -17,10 +18,7 @@ io.on("connection", socket => {
   console.log(`socketId: ${socket.id}, userId: ${user}`);
 });
 
-mongoose.connect(
-  "mongodb+srv://tindev:6Qj4ipCI0hJ3VMv0@cluster0-bgcha.mongodb.net/tindev?retryWrites=true&w=majority",
-  { useNewUrlParser: true }
-);
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
 
 app.use((req, res, next) => {
   req.io = io;
